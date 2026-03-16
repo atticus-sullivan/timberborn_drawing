@@ -1,0 +1,364 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2024 by Lukas Heindl <oss.heindl+latex@protonmail.com>
+% ---------------------------------------------------------------------------
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Lukas Heindl.
+%
+% This work consists of the files beamercolorthemeCatppuccin.dtx and beamercolorthemeCatppuccin.ins
+% and the derived filebase beamercolorthemeCatppuccin.sty.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{timberborndrawing.dtx}
+%</driver>
+%<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<package>\ProvidesPackage{timberborndrawing}
+%<*package>
+   [2026/03/16 v0.1.0 initial draft]
+%</package>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[a4paper,margin=25mm,left=50mm,nohead]{geometry}
+\usepackage{babel}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,listingsutf8,documentation}
+
+\usepackage{catppuccinpalette}
+\usepackage{listings}
+\lstset{
+	rulecolor=\color{black},
+	emphstyle=\color{CtpYellow},
+	basicstyle=\tiny\ttfamily,
+	stringstyle=\color{CtpGreen},
+	commentstyle=\color{CtpOverlay2},
+	keywordstyle=\color{CtpMauve},
+	backgroundcolor=\color{CtpBase},
+	frame=none,
+	%
+	columns=fullflexible, % columns of chars
+	tabsize=2,
+	%
+	captionpos=b,
+	%
+	breakautoindent=true, %
+	breakindent=1em,
+	% postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	breaklines=true,
+	%
+	showstringspaces=false,
+	showtabs=false,
+	showspaces=false,
+	keepspaces=true,
+	%
+	inputencoding=utf8, extendedchars=true,
+	literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+	{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+
+\usepackage{tikz}
+\usetikzlibrary{graphdrawing,shapes}
+\usetikzlibrary{arrows.meta,automata,arrows}
+\usegdlibrary{layered}
+
+\usepackage{adjustbox}
+
+\usepackage{timberborndrawing}[2026/03/16]
+
+\RecordChanges
+\begin{document}
+  \DocInput{\jobname.dtx}
+  \PrintChanges
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{362}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \changes{v0.0.0}{2026/03/16}{First draft}
+%
+% \providecommand*{\url}{\texttt}
+% \GetFileInfo{timberborndrawing.dtx}
+% \title{\textsf{timberborndrawing} --- Draw graph for timberborn
+% }
+% \author{Lukas Heindl \\ \url{oss.heindl+latex@protonmail.com} \\Github:
+% \url{https://github.com/atticus-sullivan/timberborndrawing}}
+% \date{\fileversion~from \filedate}
+%
+% \maketitle
+%
+% \begin{abstract}
+% The package provides a small interface between \LaTeX{}
+% and a Lua backend that reads JSON data and generates
+% TikZ drawings representing Timberborn production chains.
+% 
+% Documents using this package need to be compiled with
+% LuaLaTeX. The package requires |tikz| (and |pgfkeys|).
+% \end{abstract}
+%
+% \tableofcontents
+%
+% \section{Usage}
+% Load this package as |\usepackage{timberborndrawing}|
+%
+% The overall principle of this is the following:
+% First, all information is read in by the lua layer (usually from a json file).
+% Then, this information can be drawn.
+% For this the lua layer emits the corresponding tikz code which needs to be set within a \verb|tikzpicture|.
+% The emitted code only defines the content (nodes and connections).
+% The appearance can be modified e.g. by adjusting the tikz styles.
+%
+% Note that the graph is only in a way that connects a \emph{hut} with consumed and produced \emph{resource}s.
+% Resources are never connected directly with each other. Huts are also never connected directly with each other.
+%
+% The following commands are defined:
+% \begin{docCommand}[]{timberborndrawingReset}{}
+%   Reset the internal Lua state.
+% \end{docCommand}
+%
+% \begin{docCommand}[]{timberborndrawingLoadJSON}{\marg{file-path}}
+%   Read the data from the specified JSON file.
+% \end{docCommand}
+%
+% \begin{docCommand}[]{timberborndrawingDrawAll}{\marg{showCnt}}
+%   Emit the tikz code.
+%   Must be called inside a \verb|tikzpicture|.
+% \end{docCommand}
+%
+% \subsection{Keys used for adjusting}
+% The following keys can be used to customize the output.
+%
+% \tcbmakedocSubKey{docTimberborndrawing}{timberborndrawing}
+%
+% \begin{docTimberborndrawing}{hut/node}{\meta{style}}{style, initially empty}
+%   This style is applied to the nodes representing a \emph{hut} (something which has an input and an output).
+% \end{docTimberborndrawing}
+%
+% \begin{docTimberborndrawing}{resource/node}{\meta{style}}{style, initially empty}
+%    This style is applied to the nodes representing a \emph{resource} (something which can be stored).
+% \end{docTimberborndrawing}
+% \begin{docTimberborndrawing}{resource/pos}{\meta{style}}{style, initially empty}
+%    When a resource is net-positive (currently builds up).
+% \end{docTimberborndrawing}
+% \begin{docTimberborndrawing}{resource/neg}{\meta{style}}{style, initially empty}
+%    When a resource is net-negative (currently empties).
+% \end{docTimberborndrawing}
+%
+% \begin{docTimberborndrawing}{edgeIn}{\meta{style}}{style, initially empty}
+%    This style is applied to the incoming edges of a hut.
+% \end{docTimberborndrawing}
+% \begin{docTimberborndrawing}{edgeOut}{\meta{style}}{style, initially empty}
+%    This style is applied to the outgoing edges of a hut.
+% \end{docTimberborndrawing}
+% \begin{docTimberborndrawing}{every edge}{\meta{style}}{style, initially empty}
+%    This style is applied to all edges in the graph.
+% \end{docTimberborndrawing}
+%
+% \subsection{Example}
+%<*doc>
+\begin{filecontents}[noheader]{data.json}
+[
+  {
+    "template": "Birch",
+    "name": "Birch",
+    "recipe": null,
+    "cnt": 420,
+    "dur": "7d",
+    "inputs": {},
+    "outputs": {
+      "Wood": 1
+    }
+  },
+  {
+    "template": "LumberMill.Folktails",
+    "name": "LumberMill.Folktails",
+    "recipe": null,
+    "cnt": 2,
+    "dur": "1.3h",
+    "inputs": {
+      "Wood": 1,
+      "Power": 50
+    },
+    "outputs": {
+      "Planks": 1
+    }
+  }
+]
+\end{filecontents}
+\begin{dispListing*}{listing options={language=json},title={\verb|data.json|}}
+[
+  {
+    "template": "Birch",
+    "name": "Birch",
+    "recipe": null,
+    "cnt": 42,
+    "dur": "7d",
+    "inputs": {},
+    "outputs": {
+      "Wood": 1
+    }
+  },
+  {
+    "template": "LumberMill.Folktails",
+    "name": "LumberMill.Folktails",
+    "recipe": null,
+    "cnt": 2,
+    "dur": "1.3h",
+    "inputs": {
+      "Wood": 1,
+      "Power": 50
+    },
+    "outputs": {
+      "Planks": 1
+    }
+  }
+]
+\end{dispListing*}
+
+\begin{dispExample*}{listing options={language=[LaTeX]TeX}}
+\timberborndrawingReset
+\timberborndrawingLoadJSON{./data.json}
+\maxsizebox{\linewidth}{\textheight}{
+  \begin{tikzpicture}[
+    /timberborndrawing/hut/node/.style={
+      draw,ellipse,
+      align=center,
+    },
+    /timberborndrawing/resource/neg/.style={CtpRed},
+    /timberborndrawing/resource/pos/.style={CtpGreen},
+    /timberborndrawing/every edge/.style={
+      draw,
+      ->,>={Stealth[scale=2]},shorten >=1pt,
+    },
+    layered layout,
+    level distance=15ex,
+    sibling sep=8em,
+    ]
+    \timberborndrawingDrawAll{true}
+  \end{tikzpicture}
+}
+\end{dispExample*}
+%</doc>
+% 
+%
+% \newpage
+% \section{Implementation}
+% This package uses |timberborndrawing| as prefix/directory where
+% possible. Since this is not possible for latex macro names, in this
+% occasions |timberborndrawing@| is used as prefix.
+% \subsection{timberborndrawing.sty}
+% \subsubsection{Global Stuff}
+%    \begin{macrocode}
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{timberborndrawing}[2026/03/16 Timberborn drawing helper]
+
+\RequirePackage{tikz}
+\usetikzlibrary{graphs,graphdrawing}
+\RequirePackage{amsmath}
+\RequirePackage{pgfkeys}
+%    \end{macrocode}
+%
+% \subsubsection{Key Definitions}
+%
+% The pgfkeys interface used by the Lua backend.
+%
+%    \begin{macrocode}
+
+\pgfkeys{
+	/timberborndrawing/hut/node/.style={},
+	/timberborndrawing/resource/node/.style={},
+	/timberborndrawing/resource/pos/.style={},
+	/timberborndrawing/resource/neg/.style={},
+	/timberborndrawing/every edge/.style={},
+	/timberborndrawing/edgeIn/.style={},
+	/timberborndrawing/edgeOut/.style={},
+}
+%    \end{macrocode}
+% \subsubsection{Lua Backend}
+%
+% Load the Lua module which contains the drawing logic.
+%
+%    \begin{macrocode}
+\directlua{
+tim = require("timberborndrawing")
+}
+%    \end{macrocode}
+%
+% \subsubsection{User Commands}
+%
+% Reset the Lua drawing state.
+%
+%    \begin{macrocode}
+\newcommand{\timberborndrawingReset}{
+  \directlua{tim.reset()}
+}
+%    \end{macrocode}
+%
+% Load a JSON analysis file.
+%
+%    \begin{macrocode}
+\newcommand{\timberborndrawingLoadJSON}[1]{
+  \directlua{tim.loadJSON("#1")}
+}
+%    \end{macrocode}
+%
+% Execute the drawing routine.
+%
+%    \begin{macrocode}
+\NewDocumentCommand{\timberborndrawingDrawAll}{m}{
+  \directlua{tim.drawAll(#1)}
+}
+%</package>
+%    \end{macrocode}
+\endinput
+%
+% \iffalse
+%</package>
+% \fi
+%
+% \Finale
+\endinput
