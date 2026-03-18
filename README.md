@@ -10,6 +10,9 @@ The LaTeX package `semesterplannerLua` is distributed under the LPPL 1.3 license
 ## Description
 ![A teaser how the output of this package looks like](assets/teaser.png)
 
+> [!NOTE]
+> This package needs to be used with LuaLaTeX
+
 This package draws some graphs for the game timberborn. The data is read from a
 json file which can be generated via [timberborn_plots](https://github.com/atticus-sullivan/timberborn_plots).
 This way the json file can be automatically updated when a new savefile is
