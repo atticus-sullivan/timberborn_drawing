@@ -4,6 +4,8 @@ Author: Lukas Heindl (`oss.heindl+latex@protonmail.com`).
 
 <!-- CTAN page: [timberborndrawing](https://ctan.org/pkg/timberborndrawing) -->
 
+![A teaser how the output of this package looks like](assets/teaser.png)
+
 ## License
 The LaTeX package `semesterplannerLua` is distributed under the LPPL 1.3 license.
 
